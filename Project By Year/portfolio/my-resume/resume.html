@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angel Mae Morado — Résumé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ─────────────────────────────────────────
+       TOKENS  — strict monochrome
+    ───────────────────────────────────────── */
+    :root {
+      --black:      #0d0d0d;
+      --ink:        #1c1c1c;
+      --ink-mid:    #444444;
+      --ink-light:  #767676;
+      --border:     #d0d0d0;
+      --border-lt:  #e8e8e8;
+      --bg:         #ffffff;
+      --bg-sidebar: #f4f4f4;
+
+      /* Type scale */
+      --font-display: 'EB Garamond', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      /* Layout */
+      --sidebar-w: 196px;
+      --page-w:    794px;   /* A4 @ 96 dpi */
+      --page-h:    1122px;
+    }
+
+    /* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    ul { list-style: none; }
+
+    /* ─────────────────────────────────────────
+       SHELL
+    ───────────────────────────────────────── */
+    html, body {
+      background: #c8c8c8;
+      font-family: var(--font-body);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: var(--page-w);
+      min-height: var(--page-h);
+      margin: 2.5rem auto;
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+    }
+
+    /* ─────────────────────────────────────────
+       SIDEBAR
+    ───────────────────────────────────────── */
+    .sidebar {
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Name block — full-bleed black */
+    .name-block {
+      background: var(--black);
+      padding: 2.2rem 1.4rem 2rem;
+    }
+
+    .name-initials {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 0.9rem;
+    }
+
+    /* hairline rule */
+    .name-rule {
+      width: 28px;
+      height: 1px;
+      background: rgba(255,255,255,0.4);
+      margin-bottom: 0.85rem;
+    }
+
+    .name-full {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.55;
+    }
+
+    .name-title {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.52);
+      margin-top: 0.3rem;
+    }
+
+    /* Sidebar content sections */
+    .sb-section {
+      padding: 1.5rem 1.4rem 0;
+    }
+
+    .sb-section:last-child {
+      padding-bottom: 2rem;
+    }
+
+    .sb-label {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sb-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Contact */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+
+    .c-icon {
+      font-size: 0.68rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      flex-shrink: 0;
+      width: 14px;
+      text-align: center;
+    }
+
+    .c-text {
+      font-size: 0.7rem;
+      line-height: 1.55;
+      color: var(--ink-mid);
+      word-break: break-word;
+    }
+
+    /* Skills */
+    .skill-group {
+      margin-bottom: 1rem;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .sg-label {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.28rem;
+    }
+
+    .chip {
+      font-size: 0.62rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--ink-mid);
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* Certs */
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cert-item {
+      font-size: 0.7rem;
+      line-height: 1.5;
+      color: var(--ink-mid);
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .cert-item::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+      font-size: 0.65rem;
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       MAIN
+    ───────────────────────────────────────── */
+    .main {
+      padding: 2.6rem 2.4rem 2.8rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* About statement */
+    .about-statement {
+      padding-bottom: 1.8rem;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid var(--border-lt);
+    }
+
+    .about-statement p {
+      font-family: var(--font-display);
+      font-size: 1.02rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--ink-mid);
+      max-width: 52ch;
+    }
+
+    /* Section heading */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.3rem;
+      margin-top: 1.8rem;
+    }
+
+    .sec-head:first-of-type {
+      margin-top: 0;
+    }
+
+    .sec-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .sec-head h2 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .sec-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border-lt);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: 1px 1fr;
+      gap: 0 1.1rem;
+      position: relative;
+    }
+
+    /* vertical track */
+    .tl-track {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tl-track::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      bottom: -1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      background: var(--border-lt);
+    }
+
+    /* hide track line on last entry */
+    .tl-row:last-child .tl-track::before {
+      display: none;
+    }
+
+    .tl-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--black);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .tl-content {}
+
+    .tl-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.12rem;
+    }
+
+    .tl-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .tl-date {
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tl-org {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--ink-mid);
+      margin-bottom: 0.42rem;
+    }
+
+    .tl-sub {
+      font-size: 0.63rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.45rem;
+    }
+
+    .tl-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+    }
+
+    .tl-bullets li {
+      font-size: 0.74rem;
+      line-height: 1.62;
+      color: var(--ink-mid);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .tl-bullets li::before {
+      content: '·';
+      position: absolute;
+      left: 0.25rem;
+      color: var(--ink-light);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* ─────────────────────────────────────────
+       PRINT
+    ───────────────────────────────────────── */
+    @media print {
+      html, body { background: none; }
+      .page { margin: 0; box-shadow: none; width: 100%; min-height: 100vh; }
+    }
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+
+    <div class="name-block">
+      <div class="name-initials">AM</div>
+      <div class="name-rule"></div>
+      <div class="name-full">Angel Mae<br>Morado</div>
+      <div class="name-title">Full-Stack Developer</div>
+    </div>
+
+    <!-- Contact -->
+    <div class="sb-section">
+      <div class="sb-label">Contact</div>
+      <div class="contact-list">
+        <div class="contact-row">
+          <span class="c-icon">⌂</span>
+          <span class="c-text">Alubihid, Buenavista<br>Agusan del Norte, PH</span>
+        </div>
+        <div class="contact-row">
+          <span class="c-icon">✆</span>
+          <span class="c-text">09971569161</span>
+        </div>
+        <div class="contact-row">
+          <span class="c-icon">✉</span>
+          <span class="c-text">maemorado29@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="sb-section">
+      <div class="sb-label">Technical</div>
+
+      <div class="skill-group">
+        <div class="sg-label">Languages</div>
+        <div class="skill-chips">
+          <span class="chip">Python</span>
+          <span class="chip">HTML/CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">PHP</span>
+          <span class="chip">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="sg-label">Frameworks</div>
+        <div class="skill-chips">
+          <span class="chip">React</span>
+          <span class="chip">Django</span>
+          <span class="chip">Laravel</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">Tailwind</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="sg-label">Tools</div>
+        <div class="skill-chips">
+          <span class="chip">Figma</span>
+          <span class="chip">Supabase</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Access</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soft Skills -->
+    <div class="sb-section">
+      <div class="sb-label">Strengths</div>
+      <div class="skill-group">
+        <div class="skill-chips">
+          <span class="chip">IT Support</span>
+          <span class="chip">Troubleshooting</span>
+          <span class="chip">Research</span>
+          <span class="chip">Data Entry</span>
+          <span class="chip">Collaboration</span>
+          <span class="chip">Detail-Oriented</span>
+          <span class="chip">Fast Learner</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificates -->
+    <div class="sb-section">
+      <div class="sb-label">Certificates</div>
+      <div class="cert-list">
+        <div class="cert-item">Microsoft Excel — FSUU, 2025</div>
+        <div class="cert-item">Microsoft Access Expert — FSUU, 2025</div>
+        <div class="cert-item">Certificate of Participation, Caraga Health Research Conference, 2025</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <!-- About -->
+    <div class="about-statement">
+      <p>A dedicated IT student and aspiring full-stack developer seeking a part-time position where I can apply my skills, develop practical experience, and contribute positively to the organization. Hardworking, adaptable, and eager to learn.</p>
+    </div>
+
+    <!-- Education -->
+    <div class="sec-head">
+      <h2>Edu<em>cation</em></h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-top">
+            <div class="tl-title">Bachelor of Information Technology</div>
+            <div class="tl-date">2023 – 2028</div>
+          </div>
+          <div class="tl-org">Father Saturnino Urios University (FSUU)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="sec-head">
+      <h2>Work <em>Experience</em></h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-row">
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-top">
+            <div class="tl-title">Student Assistant — Technical</div>
+            <div class="tl-date">2023 – Present</div>
+          </div>
+          <div class="tl-org">Father Saturnino Urios University (FSUU)</div>
+          <ul class="tl-bullets">
+            <li>Provided technical support and assisted with system setup and troubleshooting.</li>
+            <li>Maintained documentation and supported daily IT operations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-top">
+            <div class="tl-title">Freelance Web Developer</div>
+            <div class="tl-date">Present</div>
+          </div>
+          <div class="tl-org">Self-Employed / Independent</div>
+          <ul class="tl-bullets">
+            <li>Developed web prototypes and full applications using HTML/CSS, JavaScript, Python, and Figma.</li>
+            <li>Collaborated with clients to understand requirements and deliver functional solutions.</li>
+            <li>Tested, debugged, and maintained projects to ensure proper performance.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Projects -->
+    <div class="sec-head">
+      <h2>Selected <em>Projects</em></h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-row">
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-top">
+            <div class="tl-title">Fintrackr</div>
+            <div class="tl-date">fintrackr-mm7e.onrender.com</div>
+          </div>
+          <div class="tl-sub">Node.js · React · Supabase · Next.js · Tailwind</div>
+          <ul class="tl-bullets">
+            <li>Personal finance management system for recording expenses, monitoring spending habits, and tracking budgets.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-top">
+            <div class="tl-title">DMEP Collection</div>
+            <div class="tl-date">dmep.onrender.com</div>
+          </div>
+          <div class="tl-sub">Django · Supabase · Tailwind · JavaScript</div>
+          <ul class="tl-bullets">
+            <li>Web-based shopping platform enabling customers to browse products, place orders, and manage purchases online.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+</body>
+</html>
